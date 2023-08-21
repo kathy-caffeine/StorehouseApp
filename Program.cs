@@ -38,7 +38,7 @@ for(int i = 0; i<10; i++)
         null));
 }
 
-/*var groups = controller.GetRulledPalletList();
+var groups = controller.GetRulledPalletList();
 foreach(var group in groups)
 {
     Console.WriteLine("Годен до " + group.Key.ToString());
@@ -46,10 +46,10 @@ foreach(var group in groups)
     {
         Console.WriteLine(item.ToString());
     }
-}*/
+}
 
-/*var statistics =  controller.GetStatistics();
+var statistics =  controller.GetStatistics();
 foreach(var item in statistics)
 {
     Console.WriteLine(item.ToString() );
-}*/
+}
