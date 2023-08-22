@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StorehouseApp.Dal.Repositories.Interfaces;
 
-internal interface IPalletRepository
+public interface IPalletRepository
 {
     public void Save(PalletEntity entity);
     public IReadOnlyList<PalletEntity> Query();
@@ -18,4 +18,5 @@ internal interface IPalletRepository
     public List<PalletEntity> RulerPalletStatistics();
     public void Serialize();
     public void Deserialize(string fileName);
+    public bool stateCheckout();
 }

@@ -9,13 +9,19 @@ IPalletRepository palletRepository = new PalletRepository();
 IPalletService palletService = new PalletService(palletRepository);
 V1StorehouseAppControllers controller = new(palletService);
 
-Console.WriteLine("Выберите формат ввода данных:");
-Console.WriteLine("1: сгенерировать случайно");
-Console.WriteLine("2: импортировать из файла");
 var crunch = true;
 while (crunch)
 {
-    var inputFormat = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Выберите формат ввода данных:");
+    Console.WriteLine("1: сгенерировать случайно");
+    Console.WriteLine("2: импортировать из файла");
+    int inputFormat;
+    bool c = Int32.TryParse(Console.ReadLine(), out inputFormat);
+    if(c == false)
+    {
+        Console.WriteLine("Неверный формат введёных данных, попробуйте ещё раз.");
+        continue;
+    }
 
     switch (inputFormat)
     {
@@ -72,8 +78,14 @@ while (crunch)
             {
                 Console.WriteLine("Введите имя файла:");
                 var filename = Console.ReadLine();
-                controller.Deserealize(filename);
-                crunch = false;
+                if(filename == null)
+                {
+                    Console.WriteLine("Некорректный ввод: имя файла не может быть пустым.");
+                    Console.WriteLine("Повторите попытку.");
+                    break;
+                }
+                controller.Deserealize(filename.Trim());
+                crunch = !controller.stateCheckout();
                 break;
             }
         default:
@@ -117,7 +129,13 @@ Console.WriteLine("2: нет");
 crunch = true;
 while (crunch)
 {
-    var choise = Convert.ToInt32(Console.ReadLine());
+    int choise;
+    var parse = Int32.TryParse(Console.ReadLine(), out choise);
+    if(parse == false)
+    {
+        Console.WriteLine("Неверный формат введёных данных, попробуйте ещё раз.");
+        continue;
+    }
     switch (choise)
     {
         case 1:
