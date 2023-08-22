@@ -8,9 +8,9 @@ namespace StorehouseApp.Bll.Services;
 internal class PalletService : IPalletService
 {
     private readonly IPalletRepository _repository;
-    public PalletService(IPalletRepository repository)
+    public PalletService(IPalletRepository _repository)
     {
-        this._repository = repository;
+        this._repository = _repository;
     }
 
     public void AddBox(BoxModel box)
@@ -73,5 +73,15 @@ internal class PalletService : IPalletService
                     x.boxes,
                     x.expirationDate))
             .ToList();
+    }
+
+    public void Serealize()
+    {
+        _repository.Serialize();
+    }
+
+    public void Deserealize(string fileName)
+    {
+        _repository.Deserialize(fileName);
     }
 }

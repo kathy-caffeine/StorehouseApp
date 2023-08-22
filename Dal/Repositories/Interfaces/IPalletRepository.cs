@@ -16,4 +16,6 @@ internal interface IPalletRepository
     public void AddPallet(PalletEntity pallet);
     public List<List<PalletEntity>> RulledSortPallet();
     public List<PalletEntity> RulerPalletStatistics();
+    public void Serialize();
+    public void Deserialize(string fileName);
 }
