@@ -41,4 +41,9 @@ public class V1StorehouseAppControllers
     {
         _palletService.Deserealize(fileName);
     }
+
+    public bool stateCheckout()
+    {
+        return _palletService.stateCheckout();
+    }
 }

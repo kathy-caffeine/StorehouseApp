@@ -4,9 +4,10 @@ using System.Text;
 
 namespace StorehouseApp.Dal.Repositories;
 
-internal class PalletRepository : IPalletRepository
+public class PalletRepository : IPalletRepository
 {
     private readonly List<PalletEntity> _repository;
+    bool crunch = true;
 
     public PalletRepository()
     {
@@ -151,17 +152,28 @@ internal class PalletRepository : IPalletRepository
         }
         catch (FileNotFoundException)
         {
-            Console.WriteLine("Такой файл не найден.");
+            Console.WriteLine("Такой файл не найден. Повторите попытку ввода.");
+            crunch = false;
         }
         catch (IndexOutOfRangeException)
         {
-            Console.WriteLine("Неверный формат файла.");
+            Console.WriteLine("Неверный формат файла. Повторите попытку ввода.");
+            crunch = false;
         }
         catch (Exception)
         {
-            Console.WriteLine("Что-то пошло не так..");
+            Console.WriteLine("Что-то пошло не так. Повторите попытку ввода.");
+            crunch = false;
         }
 
-        Console.WriteLine("Десериализация прошла успешно");
+        if(crunch)
+        {
+            Console.WriteLine("Десериализация прошла успешно");
+        }
+    }
+
+    public bool stateCheckout()
+    {
+        return crunch;
     }
 }
