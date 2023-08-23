@@ -14,4 +14,7 @@ public interface IPalletService
     public void AddPallet(PalletModel pallet);
     public List<PalletModel> GetStatistics();
     public Dictionary<DateOnly, List<PalletModel>> GetRulledPalletList();
+    public void Serealize();
+    public void Deserealize(string fileName);
+    public bool stateCheckout();
 }

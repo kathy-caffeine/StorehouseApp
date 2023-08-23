@@ -1,4 +1,4 @@
-﻿using StorehouseApp.Bll.Services;
+using StorehouseApp.Bll.Services;
 using StorehouseApp.Bll.Services.Interfaces;
 using StorehouseApp.Controllers;
 using StorehouseApp.Dal.Repositories;
@@ -26,7 +26,7 @@ for(int i = 0; i<3; i++)
         );
 }
 
-for(int git pushi = 0; i<10; i++)
+for(int i = 0; i<10; i++)
 {
     controller.AddBox(new StorehouseApp.Bll.Models.BoxModel(
         i,

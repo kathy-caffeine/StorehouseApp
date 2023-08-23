@@ -31,4 +31,19 @@ public class V1StorehouseAppControllers
     {
         _palletService.AddBox(box);
     }
+
+    public void Serealize()
+    {
+        _palletService.Serealize();
+    }
+
+    public void Deserealize(string fileName)
+    {
+        _palletService.Deserealize(fileName);
+    }
+
+    public bool stateCheckout()
+    {
+        return _palletService.stateCheckout();
+    }
 }

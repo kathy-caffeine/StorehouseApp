@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 
 namespace StorehouseApp.Dal.Repositories.Interfaces;
 
-internal interface IPalletRepository
+public interface IPalletRepository
 {
     public void Save(PalletEntity entity);
     public IReadOnlyList<PalletEntity> Query();
     public void Clear();
     public void AddBox(BoxEntity box);
     public void AddPallet(PalletEntity pallet);
-<<<<<<< Updated upstream
-    public List<List<PalletEntity>> RulledSortPallet();
-    public List<PalletEntity> RulerPalletStatistics();
-=======
     public void Serialize();
     public void Deserialize(string fileName);
     public bool stateCheckout();
->>>>>>> Stashed changes
 }
