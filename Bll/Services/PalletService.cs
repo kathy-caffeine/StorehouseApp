@@ -70,7 +70,7 @@ public class PalletService : IPalletService
         return dictionary;
     }
 
-    public List<PalletModel> GetStatistics()
+    public List<PalletModel> GetTopStatistics()
     {
         var statistics = _repository.Query()
             .OrderBy(x => x.expirationDate)
@@ -104,6 +104,6 @@ public class PalletService : IPalletService
 
     public bool stateCheckout()
     {
-        return _repository.stateCheckout();
+        return _repository.StateCheckout();
     }
 }
