@@ -12,7 +12,7 @@ public interface IPalletService
 {
     public void AddBox(BoxModel box);
     public void AddPallet(PalletModel pallet);
-    public List<PalletModel> GetStatistics();
+    public List<PalletModel> GetTopStatistics();
     public Dictionary<DateOnly, List<PalletModel>> GetRulledPalletList();
     public void Serealize();
     public void Deserealize(string fileName);

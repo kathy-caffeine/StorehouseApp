@@ -19,7 +19,7 @@ public class V1StorehouseAppControllers
 
     public List<PalletModel> GetStatistics()
     {
-        return _palletService.GetStatistics();
+        return _palletService.GetTopStatistics();
     }
 
     public void AddPallet(PalletModel pallet)
