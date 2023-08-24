@@ -39,9 +39,19 @@ public class PalletService : IPalletService
 
     public Dictionary<DateOnly, List<PalletModel>> GetRulledPalletList()
     {
-        var data = _repository.RulledSortPallet();
+        var rulledList = _repository.Query()
+            .GroupBy(x => x.expirationDate)
+            .OrderBy(x => x.Key)
+            .ToList();
+        var result = new List<List<PalletEntity>>();
+        foreach (var group in rulledList)
+        {
+            result.Add(group
+                .OrderBy(x => x.weight + x.boxes.Sum(y => y.weight))
+                .ToList());
+        }
         var dictionary = new Dictionary<DateOnly, List<PalletModel>>();
-        foreach (var item in data)
+        foreach (var item in result)
         {
             dictionary.Add(item[0].expirationDate, 
                 item.Select(
@@ -62,7 +72,14 @@ public class PalletService : IPalletService
 
     public List<PalletModel> GetStatistics()
     {
-        return _repository.RulerPalletStatistics()
+        var statistics = _repository.Query()
+            .OrderBy(x => x.expirationDate)
+            .ToList()
+            .GetRange(0, 3)
+            .OrderBy(x => x.length * x.height * x.width
+            + x.boxes.Sum(y => y.width * y.length * y.height))
+            .ToList();
+        return statistics
             .Select(x =>
             new PalletModel(
                     x.id,

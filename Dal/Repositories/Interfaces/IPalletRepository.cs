@@ -14,8 +14,6 @@ public interface IPalletRepository
     public void Clear();
     public void AddBox(BoxEntity box);
     public void AddPallet(PalletEntity pallet);
-    public List<List<PalletEntity>> RulledSortPallet();
-    public List<PalletEntity> RulerPalletStatistics();
     public void Serialize();
     public void Deserialize(string fileName);
     public bool stateCheckout();
